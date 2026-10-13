@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tradingdaten – Projektname</title>
   <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
   <header>
     <nav aria-label="Hauptmenü">
       <a href="index.html">Start</a>
       <a href="tradingdaten.html" aria-current="page">Tradingdaten</a>
+      <a href="ueber.html">&Uuml;ber</a>
     </nav>
   </header>
   <main>
@@ -39,6 +41,8 @@
             <option value="1d">1 Tag</option>
           </select>
         </p>
+
+        <button id="filter-anwenden" type="button">Anwenden</button>
       </form>
     </section>
 
@@ -49,5 +53,9 @@
       </div>
     </section>
   </main>
+
+  <footer>
+    <p>Web-Engineering 1 · DHBW Karlsruhe · <span id="jahr"></span></p>
+  </footer>
 </body>
 </html>
