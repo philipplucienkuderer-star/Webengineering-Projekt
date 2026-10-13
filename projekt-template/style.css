@@ -31,7 +31,6 @@ nav {
   padding: var(--abstand);
   background: var(--flaeche);
 }
-
 a { color: var(--akzent); }
 
 footer {
