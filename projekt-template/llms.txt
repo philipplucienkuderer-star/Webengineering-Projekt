@@ -1,0 +1,15 @@
+# Webengineering-Projekt
+
+> Website zum Webengineering-Projekt an der DHBW Karlsruhe.
+
+Die folgenden Nutzungsbedingungen gelten für alle öffentlich zugänglichen Inhalte dieser Website:
+
+- Crawling und Indexierung durch KI-Systeme sind für Suche, Auffindbarkeit und den Abruf von Informationen zur Beantwortung von Nutzeranfragen erlaubt.
+- Die Nutzung dieser Inhalte als Trainingsdaten für KI- oder Machine-Learning-Modelle ist nicht erlaubt. Dies umfasst Vortraining, Training, Nachtraining und Fine-Tuning.
+- Das Sammeln, Speichern oder Weitergeben dieser Inhalte zum Aufbau oder zur Erweiterung von Trainingsdatensätzen ist nicht erlaubt.
+- Die Erlaubnis zum Crawling und zur Indexierung umfasst keine Erlaubnis zur Nutzung als Trainingsdaten.
+
+## Seiten
+
+- [Startseite](./index.html): Einstieg in das Projekt.
+- [Über das Projekt](./ueber.html): Informationen zum Projekt, zum Team und zu den Datenquellen.
