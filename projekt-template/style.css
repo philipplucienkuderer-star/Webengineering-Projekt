@@ -1,22 +1,41 @@
 /* Alles an einer Stelle einstellbar – ab Termin 3 füllt ihr das hier aus. */
 :root {
+  --main: #0b1220;
+  --secondary: #131e30;
+  --surface: #1b2940;
+  --accent: #2dd4bf;
+
   --bg: #ffffff;
-  --text: #1f1f1f;
-  --akzent: #0000ff;
   --flaeche: #eef0fb;
+
+  --text: #acacaf;
+  --text-muted: #94a3b8;
+  --border: #2a3a52;
+  --grid: #1e2d43;
+
+  --positive: #34d399;
+  --negative: #fb7185;
+  --warning: #fbbf24;
+  --info: #60a5fa;
+
+  --chart-primary: #60a5fa;
+  --chart-secondary: #c4b5fd;
+
   --radius: 12px;
   --abstand: 1rem;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
-  margin: 0;
   font-family: system-ui, "Segoe UI", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--text);
-  background: var(--bg);
+  background: var(--main);
+  margin: 3px;
 }
 
 main {
@@ -29,12 +48,31 @@ nav {
   display: flex;
   gap: var(--abstand);
   padding: var(--abstand);
-  background: var(--flaeche);
+  background: var(--secondary);
 }
-a { color: var(--akzent); }
+
+a {
+  color: var(--text);
+}
 
 footer {
   padding: var(--abstand);
-  font-size: .875rem;
-  color: #555;
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+:hover {
+  border-radius: 5px;
+  border-width: 5px;
+  border-color: var(--accent);
+}
+
+:focus-visible {
+  font-weight: bold;
+  color: var(--accent);
+  border-color: var(--accent);
+  border-radius: 5px;
+  padding: 5px;
+  background-color: var(--surface);
+  outline: 0;
 }
