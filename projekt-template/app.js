@@ -84,3 +84,34 @@ if (filterForm && kursdaten) {
   filterForm.addEventListener("change", updateKursdatenPlatzhalter);
   filterAnwenden?.addEventListener("click", updateKursdatenPlatzhalter);
 }
+
+// Startseite: Märkte nach Kategorie filtern.
+// Die data-Attribute dienen als Haken für JS, die Klassen nur fürs Aussehen.
+const filterButtons = document.querySelectorAll("[data-filter]");
+const marktKarten = document.querySelectorAll("[data-kategorie]");
+const marktAnzahl = document.querySelector("#markt-anzahl");
+
+function filterMaerkte(kategorie) {
+  let sichtbar = 0;
+
+  marktKarten.forEach((karte) => {
+    const passt = kategorie === "alle" || karte.dataset.kategorie === kategorie;
+    karte.hidden = !passt;
+    if (passt) sichtbar++;
+  });
+
+  filterButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.filter === kategorie));
+  });
+
+  if (marktAnzahl) {
+    marktAnzahl.textContent = `${sichtbar} von ${marktKarten.length} Märkten`;
+  }
+}
+
+if (marktKarten.length > 0) {
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => filterMaerkte(button.dataset.filter));
+  });
+  filterMaerkte("alle");
+}
