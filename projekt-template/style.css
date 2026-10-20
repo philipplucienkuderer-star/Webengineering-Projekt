@@ -1,29 +1,5 @@
 /* Alles an einer Stelle einstellbar – ab Termin 3 füllt ihr das hier aus. */
 :root {
-  --main: #f8fafc;
-  --secondary: #e2e8f0;
-  --surface: #ffffff;
-  --accent: #0d9488;
-
-  --bg: #ffffff;
-  --flaeche: #f1f5f9;
-
-  --text: #0f172a;
-  --text-muted: #475569;
-  --border: #cbd5e1;
-  --grid: #e2e8f0;
-
-  --positive: #34d399;
-  --negative: #fb7185;
-  --warning: #fbbf24;
-  --info: #60a5fa;
-
-  --chart-primary: #60a5fa;
-  --chart-secondary: #c4b5fd;
-
-  --toggle-bg: #131e30;
-  --toggle-fg: #e2e8f0;
-
   --radius: 12px;
   --abstand: 1rem;
 }
@@ -44,34 +20,6 @@
 
   --toggle-bg: #131e30;
   --toggle-fg: #e2e8f0;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --main: #0b1220;
-    --secondary: #131e30;
-    --surface: #1b2940;
-    --accent: #2dd4bf;
-
-    --bg: #0f172a;
-    --flaeche: #111827;
-
-    --text: #e2e8f0;
-    --text-muted: #94a3b8;
-    --border: #2a3a52;
-    --grid: #1e2d43;
-
-    --positive: #34d399;
-    --negative: #fb7185;
-    --warning: #fbbf24;
-    --info: #60a5fa;
-
-    --chart-primary: #60a5fa;
-    --chart-secondary: #c4b5fd;
-
-    --toggle-bg: #e2e8f0;
-    --toggle-fg: #0f172a;
-  }
 }
 
 :root[data-theme="dark"] {
@@ -196,6 +144,18 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-field {
+  display: flex;
+  padding-bottom: 0.2rem;
+  justify-content: space-between;
 }
 
 .filter-chip {
@@ -212,24 +172,14 @@ a:hover {
   border-color: var(--accent);
 }
 
-.filter-chip:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
 .filter-chip[aria-pressed="true"] {
   border-color: var(--accent);
   background: var(--accent);
   color: var(--bg);
 }
 
-.markt-anzahl {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-}
-
-/* Grid: so viele Spalten wie passen, jede mind. 14rem breit –
-   auf dem Handy automatisch einspaltig, ganz ohne Breakpoint. */
+/* Grid: so viele Spalten wie passen, jede mind. 14rem breit – */
+/* auf dem Handy automatisch einspaltig.  */
 .markt-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
@@ -258,7 +208,7 @@ a:hover {
 /* Flexbox (waagrecht): Name links, Kategorie rechts */
 .markt-karte__kopf {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
 }
@@ -280,20 +230,10 @@ a:hover {
   margin-top: auto;
 }
 
-/* Tradingdaten: Filterformular */
-
-/* Flexbox: Felder nebeneinander, bei Platzmangel untereinander.
-   align-items: flex-end setzt den Button auf eine Linie mit den Feldern. */
-.filter-form {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: var(--abstand);
-}
-
-/* Flexbox (senkrecht): Label über dem Feld, ersetzt das frühere <br /> */
-.feld {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+.kursdaten {
+  padding: var(--abstand);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--flaeche);
+  min-height: 10rem;
 }

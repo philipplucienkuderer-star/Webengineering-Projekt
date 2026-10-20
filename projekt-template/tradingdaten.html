@@ -30,23 +30,22 @@
       <section aria-labelledby="filter-titel">
         <h2 id="filter-titel">Filter</h2>
 
-        <!-- Flexbox: Felder nebeneinander, brechen bei Platzmangel um -->
         <form id="filter-form" class="filter-form">
-          <div class="feld">
+          <div class="filter-field">
             <label for="startdatum">Startdatum</label>
             <input id="startdatum" name="startdatum" type="date" />
           </div>
 
-          <div class="feld">
+          <div class="filter-field">
             <label for="enddatum">Enddatum</label>
             <input id="enddatum" name="enddatum" type="date" />
           </div>
 
-          <div class="feld">
+          <div class="filter-field">
             <label for="kerzengroesse">Kerzengröße</label>
             <select id="kerzengroesse" name="kerzengroesse">
               <option value="1m">1 Minute</option>
-              <option value="5m" selected>5 Minuten</option>
+              <option value="5m">5 Minuten</option>
               <option value="1h">1 Stunde</option>
               <option value="1d">1 Tag</option>
             </select>
@@ -58,18 +57,7 @@
 
       <section aria-labelledby="kursdaten-titel">
         <h2 id="kursdaten-titel">Kursdaten</h2>
-        <div
-          id="kursdaten"
-          role="status"
-          aria-live="polite"
-          style="
-            padding: var(--abstand);
-            border: 1px dashed #9aa0b5;
-            border-radius: var(--radius);
-            background: var(--flaeche);
-            min-height: 12rem;
-          "
-        >
+        <div id="kursdaten" role="status" aria-live="polite" class="kursdaten">
           Hier werden später Kursdaten angezeigt.
         </div>
       </section>

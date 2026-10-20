@@ -24,9 +24,7 @@ function getPreferredTheme() {
   const savedTheme = localStorage.getItem(THEME_KEY);
   if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
 
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 function applyTheme(theme) {
@@ -48,9 +46,7 @@ if (themeToggle && themeIcon) {
 
   themeToggle.addEventListener("click", () => {
     const currentTheme =
-      document.documentElement.getAttribute("data-theme") === "dark"
-        ? "dark"
-        : "light";
+      document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
     const nextTheme = currentTheme === "dark" ? "light" : "dark";
     localStorage.setItem(THEME_KEY, nextTheme);
     applyTheme(nextTheme);
@@ -60,19 +56,11 @@ if (themeToggle && themeIcon) {
 function updateKursdatenPlatzhalter() {
   if (!kursdaten) return;
 
-  const start =
-    startdatum && startdatum.value ? startdatum.value : "(kein Startdatum)";
+  const start = startdatum && startdatum.value ? startdatum.value : "(kein Startdatum)";
   const ende = enddatum && enddatum.value ? enddatum.value : "(kein Enddatum)";
-  const kerze =
-    kerzengroesse && kerzengroesse.value
-      ? kerzengroesse.value
-      : "(keine Kerzengröße)";
+  const kerze = kerzengroesse && kerzengroesse.value ? kerzengroesse.value : "(keine Kerzengröße)";
 
-  if (
-    startdatum?.value &&
-    enddatum?.value &&
-    startdatum.value > enddatum.value
-  ) {
+  if (startdatum?.value && enddatum?.value && startdatum.value > enddatum.value) {
     kursdaten.textContent = "Fehler: Startdatum liegt nach dem Enddatum.";
     return;
   }
