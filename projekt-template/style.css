@@ -35,7 +35,13 @@ body {
   line-height: 1.5;
   color: var(--text);
   background: var(--main);
-  margin: 3px;
+  margin: 0;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 main {
@@ -61,10 +67,9 @@ footer {
   color: var(--text);
 }
 
-:hover {
+a:hover {
   border-radius: 5px;
-  border-width: 5px;
-  border-color: var(--accent);
+  outline: 2px solid var(--accent);
 }
 
 :focus-visible {
