@@ -30,26 +30,27 @@
       <section aria-labelledby="filter-titel">
         <h2 id="filter-titel">Filter</h2>
 
-        <form id="filter-form">
-          <p>
-            <label for="startdatum">Startdatum</label><br />
+        <!-- Flexbox: Felder nebeneinander, brechen bei Platzmangel um -->
+        <form id="filter-form" class="filter-form">
+          <div class="feld">
+            <label for="startdatum">Startdatum</label>
             <input id="startdatum" name="startdatum" type="date" />
-          </p>
+          </div>
 
-          <p>
-            <label for="enddatum">Enddatum</label><br />
+          <div class="feld">
+            <label for="enddatum">Enddatum</label>
             <input id="enddatum" name="enddatum" type="date" />
-          </p>
+          </div>
 
-          <p>
-            <label for="kerzengroesse">Kerzengröße</label><br />
+          <div class="feld">
+            <label for="kerzengroesse">Kerzengröße</label>
             <select id="kerzengroesse" name="kerzengroesse">
               <option value="1m">1 Minute</option>
               <option value="5m" selected>5 Minuten</option>
               <option value="1h">1 Stunde</option>
               <option value="1d">1 Tag</option>
             </select>
-          </p>
+          </div>
 
           <button id="filter-anwenden" type="button">Anwenden</button>
         </form>

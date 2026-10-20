@@ -33,6 +33,116 @@
       <h1>Tradingdaten Downloadcenter</h1>
       <p>Hier kann man Tradingdaten downloaden.</p>
 
+      <section aria-labelledby="maerkte-titel">
+        <h2 id="maerkte-titel">Verfügbare Märkte</h2>
+
+        <!-- Flexbox: Filter-Buttons nebeneinander, brechen bei Platzmangel um -->
+        <div
+          class="filter-leiste"
+          role="group"
+          aria-label="Nach Kategorie filtern"
+        >
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter="alle"
+            aria-pressed="true"
+          >
+            Alle
+          </button>
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter="krypto"
+            aria-pressed="false"
+          >
+            Krypto
+          </button>
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter="aktien"
+            aria-pressed="false"
+          >
+            Aktien
+          </button>
+          <button
+            type="button"
+            class="filter-chip"
+            data-filter="devisen"
+            aria-pressed="false"
+          >
+            Devisen
+          </button>
+        </div>
+        <p id="markt-anzahl" class="markt-anzahl" role="status"></p>
+
+        <!-- Grid: so viele Spalten wie passen, jede mind. 14rem breit –
+             auf dem Handy automatisch einspaltig, ganz ohne Breakpoint. -->
+        <ul class="markt-grid">
+          <li class="markt-karte" data-kategorie="krypto">
+            <div class="markt-karte__kopf">
+              <h3>Bitcoin</h3>
+              <span class="markt-karte__badge">Krypto</span>
+            </div>
+            <p>Größte Kryptowährung nach Marktkapitalisierung.</p>
+            <a class="markt-karte__link" href="tradingdaten.html"
+              >Kursdaten BTC/USD</a
+            >
+          </li>
+          <li class="markt-karte" data-kategorie="krypto">
+            <div class="markt-karte__kopf">
+              <h3>Ethereum</h3>
+              <span class="markt-karte__badge">Krypto</span>
+            </div>
+            <p>Plattform für Smart Contracts und zweitgrößte Kryptowährung.</p>
+            <a class="markt-karte__link" href="tradingdaten.html"
+              >Kursdaten ETH/USD</a
+            >
+          </li>
+          <li class="markt-karte" data-kategorie="aktien">
+            <div class="markt-karte__kopf">
+              <h3>Apple</h3>
+              <span class="markt-karte__badge">Aktie</span>
+            </div>
+            <p>US-Technologiekonzern, gelistet an der NASDAQ.</p>
+            <a class="markt-karte__link" href="tradingdaten.html"
+              >Kursdaten AAPL</a
+            >
+          </li>
+          <li class="markt-karte" data-kategorie="aktien">
+            <div class="markt-karte__kopf">
+              <h3>Tesla</h3>
+              <span class="markt-karte__badge">Aktie</span>
+            </div>
+            <p>US-Hersteller von Elektroautos, gelistet an der NASDAQ.</p>
+            <a class="markt-karte__link" href="tradingdaten.html"
+              >Kursdaten TSLA</a
+            >
+          </li>
+          <li class="markt-karte" data-kategorie="devisen">
+            <div class="markt-karte__kopf">
+              <h3>Euro / US-Dollar</h3>
+              <span class="markt-karte__badge">Devisen</span>
+            </div>
+            <p>Das meistgehandelte Währungspaar der Welt.</p>
+            <a class="markt-karte__link" href="tradingdaten.html"
+              >Kursdaten EUR/USD</a
+            >
+          </li>
+          <li class="markt-karte" data-kategorie="devisen">
+            <div class="markt-karte__kopf">
+              <h3>Pfund / US-Dollar</h3>
+              <span class="markt-karte__badge">Devisen</span>
+            </div>
+            <p>Britisches Pfund gegen US-Dollar.</p>
+            <a class="markt-karte__link" href="tradingdaten.html"
+              >Kursdaten GBP/USD</a
+            >
+          </li>
+        </ul>
+      </section>
+
       <!-- Ab Termin 2: euer Formular
     <form>
       <label for="suche">Suche</label>
