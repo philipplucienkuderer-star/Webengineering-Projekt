@@ -5,21 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projektname – kurze Beschreibung</title>
   <meta name="description" content="Ein Satz, der erklärt, was diese Seite kann.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="build/style.css">
   <script src="app.js" defer></script>
 </head>
-<body>
+<body class="bg-white text-schrift">
   <header>
-    <nav aria-label="Hauptmenü">
+    <nav class="flex gap-4 bg-flaeche p-4" aria-label="Hauptmenü">
       <a href="index.html" aria-current="page">Start</a>
       <a href="tradingdaten.html">Tradingdaten</a>
       <a href="ueber.html">&Uuml;ber</a>
     </nav>
   </header>
 
-  <main>
-    <h1>Tradingdaten Downloadcenter</h1>
+  <main class="mx-auto max-w-prose p-4">
+    <h1 class="mb-2 text-3xl font-bold">Tradingdaten Downloadcenter</h1>
     <p>Hier kann man Tradingdaten downloaden.</p>
+
+    <section class="mt-8" aria-labelledby="maerkte-titel">
+      <h2 id="maerkte-titel" class="mb-3 text-2xl font-bold">Verfügbare Märkte</h2>
+
+      <!-- Flexbox: Filter-Buttons nebeneinander, brechen bei Platzmangel um -->
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Nach Kategorie filtern">
+        <button type="button" data-filter="alle" aria-pressed="true" class="cursor-pointer rounded-full border border-akzent px-4 py-1.5 text-akzent aria-pressed:bg-akzent aria-pressed:text-white">Alle</button>
+        <button type="button" data-filter="krypto" aria-pressed="false" class="cursor-pointer rounded-full border border-akzent px-4 py-1.5 text-akzent aria-pressed:bg-akzent aria-pressed:text-white">Krypto</button>
+        <button type="button" data-filter="aktien" aria-pressed="false" class="cursor-pointer rounded-full border border-akzent px-4 py-1.5 text-akzent aria-pressed:bg-akzent aria-pressed:text-white">Aktien</button>
+        <button type="button" data-filter="devisen" aria-pressed="false" class="cursor-pointer rounded-full border border-akzent px-4 py-1.5 text-akzent aria-pressed:bg-akzent aria-pressed:text-white">Devisen</button>
+      </div>
+      <p id="markt-anzahl" class="my-3 text-sm text-neutral-600" role="status"></p>
+
+      <!-- Grid: so viele Spalten wie passen, jede mind. 14rem breit –
+           auf dem Handy automatisch einspaltig, ganz ohne Breakpoint.
+           Jede Karte ist eine senkrechte Flexbox: mt-auto schiebt den Link nach unten. -->
+      <ul class="grid grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] gap-4">
+        <li class="flex flex-col gap-2 rounded-xl bg-flaeche p-4" data-kategorie="krypto">
+          <div class="flex items-baseline justify-between gap-2">
+            <h3 class="text-lg font-bold">Bitcoin</h3>
+            <span class="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap">Krypto</span>
+          </div>
+          <p>Größte Kryptowährung nach Marktkapitalisierung.</p>
+          <a class="mt-auto" href="tradingdaten.html">Kursdaten BTC/USD</a>
+        </li>
+        <li class="flex flex-col gap-2 rounded-xl bg-flaeche p-4" data-kategorie="krypto">
+          <div class="flex items-baseline justify-between gap-2">
+            <h3 class="text-lg font-bold">Ethereum</h3>
+            <span class="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap">Krypto</span>
+          </div>
+          <p>Plattform für Smart Contracts und zweitgrößte Kryptowährung.</p>
+          <a class="mt-auto" href="tradingdaten.html">Kursdaten ETH/USD</a>
+        </li>
+        <li class="flex flex-col gap-2 rounded-xl bg-flaeche p-4" data-kategorie="aktien">
+          <div class="flex items-baseline justify-between gap-2">
+            <h3 class="text-lg font-bold">Apple</h3>
+            <span class="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap">Aktie</span>
+          </div>
+          <p>US-Technologiekonzern, gelistet an der NASDAQ.</p>
+          <a class="mt-auto" href="tradingdaten.html">Kursdaten AAPL</a>
+        </li>
+        <li class="flex flex-col gap-2 rounded-xl bg-flaeche p-4" data-kategorie="aktien">
+          <div class="flex items-baseline justify-between gap-2">
+            <h3 class="text-lg font-bold">Tesla</h3>
+            <span class="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap">Aktie</span>
+          </div>
+          <p>US-Hersteller von Elektroautos, gelistet an der NASDAQ.</p>
+          <a class="mt-auto" href="tradingdaten.html">Kursdaten TSLA</a>
+        </li>
+        <li class="flex flex-col gap-2 rounded-xl bg-flaeche p-4" data-kategorie="devisen">
+          <div class="flex items-baseline justify-between gap-2">
+            <h3 class="text-lg font-bold">Euro / US-Dollar</h3>
+            <span class="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap">Devisen</span>
+          </div>
+          <p>Das meistgehandelte Währungspaar der Welt.</p>
+          <a class="mt-auto" href="tradingdaten.html">Kursdaten EUR/USD</a>
+        </li>
+        <li class="flex flex-col gap-2 rounded-xl bg-flaeche p-4" data-kategorie="devisen">
+          <div class="flex items-baseline justify-between gap-2">
+            <h3 class="text-lg font-bold">Pfund / US-Dollar</h3>
+            <span class="rounded-full bg-white px-2.5 py-0.5 text-xs whitespace-nowrap">Devisen</span>
+          </div>
+          <p>Britisches Pfund gegen US-Dollar.</p>
+          <a class="mt-auto" href="tradingdaten.html">Kursdaten GBP/USD</a>
+        </li>
+      </ul>
+    </section>
 
     <!-- Ab Termin 2: euer Formular
     <form>
@@ -35,7 +102,7 @@
     -->
   </main>
 
-  <footer>
+  <footer class="p-4 text-sm text-neutral-600">
     <p>Web-Engineering 1 · DHBW Karlsruhe · <span id="jahr"></span></p>
   </footer>
 </body>
