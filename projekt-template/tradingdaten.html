@@ -1,61 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tradingdaten – Projektname</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
-</head>
-<body>
-  <header>
-    <nav aria-label="Hauptmenü">
-      <a href="index.html">Start</a>
-      <a href="tradingdaten.html" aria-current="page">Tradingdaten</a>
-      <a href="ueber.html">&Uuml;ber</a>
-    </nav>
-  </header>
-  <main>
-    <h1>Tradingdaten</h1>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tradingdaten – Projektname</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Hauptmenü">
+        <a href="index.html">Start</a>
+        <a href="tradingdaten.html" aria-current="page">Tradingdaten</a>
+        <a href="ueber.html">&Uuml;ber</a>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Farbmodus wechseln"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle__icon" aria-hidden="true"></span>
+        </button>
+      </nav>
+    </header>
+    <main>
+      <h1>Tradingdaten</h1>
 
-    <section aria-labelledby="filter-titel">
-      <h2 id="filter-titel">Filter</h2>
+      <section aria-labelledby="filter-titel">
+        <h2 id="filter-titel">Filter</h2>
 
-      <form id="filter-form">
-        <p>
-          <label for="startdatum">Startdatum</label><br>
-          <input id="startdatum" name="startdatum" type="date">
-        </p>
+        <form id="filter-form">
+          <p>
+            <label for="startdatum">Startdatum</label><br />
+            <input id="startdatum" name="startdatum" type="date" />
+          </p>
 
-        <p>
-          <label for="enddatum">Enddatum</label><br>
-          <input id="enddatum" name="enddatum" type="date">
-        </p>
+          <p>
+            <label for="enddatum">Enddatum</label><br />
+            <input id="enddatum" name="enddatum" type="date" />
+          </p>
 
-        <p>
-          <label for="kerzengroesse">Kerzengröße</label><br>
-          <select id="kerzengroesse" name="kerzengroesse">
-            <option value="1m">1 Minute</option>
-            <option value="5m" selected>5 Minuten</option>
-            <option value="1h">1 Stunde</option>
-            <option value="1d">1 Tag</option>
-          </select>
-        </p>
+          <p>
+            <label for="kerzengroesse">Kerzengröße</label><br />
+            <select id="kerzengroesse" name="kerzengroesse">
+              <option value="1m">1 Minute</option>
+              <option value="5m" selected>5 Minuten</option>
+              <option value="1h">1 Stunde</option>
+              <option value="1d">1 Tag</option>
+            </select>
+          </p>
 
-        <button id="filter-anwenden" type="button">Anwenden</button>
-      </form>
-    </section>
+          <button id="filter-anwenden" type="button">Anwenden</button>
+        </form>
+      </section>
 
-    <section aria-labelledby="kursdaten-titel">
-      <h2 id="kursdaten-titel">Kursdaten</h2>
-      <div id="kursdaten" role="status" aria-live="polite" style="padding: var(--abstand); border: 1px dashed #9aa0b5; border-radius: var(--radius); background: var(--flaeche); min-height: 12rem;">
-        Hier werden später Kursdaten angezeigt.
-      </div>
-    </section>
-  </main>
+      <section aria-labelledby="kursdaten-titel">
+        <h2 id="kursdaten-titel">Kursdaten</h2>
+        <div
+          id="kursdaten"
+          role="status"
+          aria-live="polite"
+          style="
+            padding: var(--abstand);
+            border: 1px dashed #9aa0b5;
+            border-radius: var(--radius);
+            background: var(--flaeche);
+            min-height: 12rem;
+          "
+        >
+          Hier werden später Kursdaten angezeigt.
+        </div>
+      </section>
+    </main>
 
-  <footer>
-    <p>Web-Engineering 1 · DHBW Karlsruhe · <span id="jahr"></span></p>
-  </footer>
-</body>
+    <footer>
+      <p>Web-Engineering 1 · DHBW Karlsruhe · <span id="jahr"></span></p>
+    </footer>
+  </body>
 </html>

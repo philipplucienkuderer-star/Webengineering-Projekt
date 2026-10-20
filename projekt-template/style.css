@@ -1,17 +1,17 @@
 /* Alles an einer Stelle einstellbar – ab Termin 3 füllt ihr das hier aus. */
 :root {
-  --main: #0b1220;
-  --secondary: #131e30;
-  --surface: #1b2940;
-  --accent: #2dd4bf;
+  --main: #f8fafc;
+  --secondary: #e2e8f0;
+  --surface: #ffffff;
+  --accent: #0d9488;
 
   --bg: #ffffff;
-  --flaeche: #eef0fb;
+  --flaeche: #f1f5f9;
 
-  --text: #acacaf;
-  --text-muted: #94a3b8;
-  --border: #2a3a52;
-  --grid: #1e2d43;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --border: #cbd5e1;
+  --grid: #e2e8f0;
 
   --positive: #34d399;
   --negative: #fb7185;
@@ -21,8 +21,75 @@
   --chart-primary: #60a5fa;
   --chart-secondary: #c4b5fd;
 
+  --toggle-bg: #131e30;
+  --toggle-fg: #e2e8f0;
+
   --radius: 12px;
   --abstand: 1rem;
+}
+
+:root[data-theme="light"] {
+  --main: #f8fafc;
+  --secondary: #e2e8f0;
+  --surface: #ffffff;
+  --accent: #0d9488;
+
+  --bg: #ffffff;
+  --flaeche: #f1f5f9;
+
+  --text: #0f172a;
+  --text-muted: #475569;
+  --border: #cbd5e1;
+  --grid: #e2e8f0;
+
+  --toggle-bg: #131e30;
+  --toggle-fg: #e2e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main: #0b1220;
+    --secondary: #131e30;
+    --surface: #1b2940;
+    --accent: #2dd4bf;
+
+    --bg: #0f172a;
+    --flaeche: #111827;
+
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #2a3a52;
+    --grid: #1e2d43;
+
+    --positive: #34d399;
+    --negative: #fb7185;
+    --warning: #fbbf24;
+    --info: #60a5fa;
+
+    --chart-primary: #60a5fa;
+    --chart-secondary: #c4b5fd;
+
+    --toggle-bg: #e2e8f0;
+    --toggle-fg: #0f172a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --main: #0b1220;
+  --secondary: #131e30;
+  --surface: #1b2940;
+  --accent: #2dd4bf;
+
+  --bg: #0f172a;
+  --flaeche: #111827;
+
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #2a3a52;
+  --grid: #1e2d43;
+
+  --toggle-bg: #e2e8f0;
+  --toggle-fg: #0f172a;
 }
 
 * {
@@ -52,9 +119,43 @@ main {
 
 nav {
   display: flex;
+  align-items: center;
   gap: var(--abstand);
   padding: var(--abstand);
   background: var(--secondary);
+}
+
+.theme-toggle {
+  margin-left: auto;
+  inline-size: 2em;
+  block-size: 2em;
+  min-inline-size: 2em;
+  min-block-size: 2em;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--toggle-bg);
+  color: var(--toggle-fg);
+  cursor: pointer;
+}
+
+.theme-toggle__icon {
+  inline-size: 1.5em;
+  block-size: 1.5em;
+  display: inline-flex;
+}
+
+.theme-toggle__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.theme-toggle:focus-visible {
+  padding: 0;
 }
 
 a {
