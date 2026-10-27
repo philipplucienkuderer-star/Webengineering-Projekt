@@ -65,7 +65,7 @@ export default function TradingFilter() {
           <div className="filter-field">
             <label htmlFor="asset">Asset</label>
             <select id="asset" name="asset" defaultValue="ETH/USD">
-              <option value="BCT/USD">BTC/USD</option>
+              <option value="BTC/USD">BTC/USD</option>
               <option value="ETH/USD">ETH/USD</option>
             </select>
           </div>
