@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 export default function Footer() {
   const yearRef = useRef<HTMLSpanElement>(null);
