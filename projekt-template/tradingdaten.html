@@ -1,63 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tradingdaten – Projektname</title>
-  <link rel="stylesheet" href="build/style.css">
-  <script src="app.js" defer></script>
-</head>
-<body class="bg-white text-schrift">
-  <header>
-    <nav class="flex gap-4 bg-flaeche p-4" aria-label="Hauptmenü">
-      <a href="index.html">Start</a>
-      <a href="tradingdaten.html" aria-current="page">Tradingdaten</a>
-      <a href="ueber.html">&Uuml;ber</a>
-    </nav>
-  </header>
-  <main class="mx-auto max-w-prose p-4">
-    <h1 class="mb-2 text-3xl font-bold">Tradingdaten</h1>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tradingdaten – Projektname</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Hauptmenü">
+        <a href="index.html">Start</a>
+        <a href="tradingdaten.html" aria-current="page">Tradingdaten</a>
+        <a href="ueber.html">&Uuml;ber</a>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Farbmodus wechseln"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle__icon" aria-hidden="true"></span>
+        </button>
+      </nav>
+    </header>
+    <main class="main">
+      <h1>Tradingdaten</h1>
 
-    <section class="mt-8" aria-labelledby="filter-titel">
-      <h2 id="filter-titel" class="mb-3 text-2xl font-bold">Filter</h2>
+      <section aria-labelledby="filter-titel">
+        <h2 id="filter-titel">Filter</h2>
 
-      <!-- Grid: auf dem Handy untereinander, ab sm (640px) drei Spalten nebeneinander.
-           Jedes Feld ist eine senkrechte Flexbox: Label über dem Eingabefeld. -->
-      <form id="filter-form" class="grid gap-4 sm:grid-cols-3">
-        <div class="flex flex-col gap-1">
-          <label for="startdatum">Startdatum</label>
-          <input id="startdatum" name="startdatum" type="date" class="rounded-lg border border-slate-400 bg-white px-3 py-2">
+        <form id="filter-form" class="filter-form">
+          <div class="filter-field">
+            <label for="startdatum">Startdatum</label>
+            <input id="startdatum" name="startdatum" type="date" />
+          </div>
+
+          <div class="filter-field">
+            <label for="enddatum">Enddatum</label>
+            <input id="enddatum" name="enddatum" type="date" />
+          </div>
+
+          <div class="filter-field">
+            <label for="kerzengroesse">Kerzengröße</label>
+            <select id="kerzengroesse" name="kerzengroesse">
+              <option value="1m">1 Minute</option>
+              <option value="5m">5 Minuten</option>
+              <option value="1h">1 Stunde</option>
+              <option value="1d">1 Tag</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="asset">Asset</label>
+            <select id="asset" name="asset">
+              <option value="BCT/USD">BTC/USD</option>
+              <option value="ETH/USD" selected>ETH/USD</option>
+            </select>
+          </div>
+
+          <button id="filter-anwenden" type="button">Anwenden</button>
+        </form>
+      </section>
+
+      <section aria-labelledby="kursdaten-titel">
+        <h2 id="kursdaten-titel">Kursdaten</h2>
+        <div id="kursdaten" role="status" aria-live="polite" class="kursdaten">
+          Hier werden später Kursdaten angezeigt.
         </div>
+      </section>
+    </main>
 
-        <div class="flex flex-col gap-1">
-          <label for="enddatum">Enddatum</label>
-          <input id="enddatum" name="enddatum" type="date" class="rounded-lg border border-slate-400 bg-white px-3 py-2">
-        </div>
-
-        <div class="flex flex-col gap-1">
-          <label for="kerzengroesse">Kerzengröße</label>
-          <select id="kerzengroesse" name="kerzengroesse" class="rounded-lg border border-slate-400 bg-white px-3 py-2">
-            <option value="1m">1 Minute</option>
-            <option value="5m" selected>5 Minuten</option>
-            <option value="1h">1 Stunde</option>
-            <option value="1d">1 Tag</option>
-          </select>
-        </div>
-
-        <button id="filter-anwenden" type="button" class="cursor-pointer justify-self-start rounded-lg bg-akzent px-4 py-2 text-white">Anwenden</button>
-      </form>
-    </section>
-
-    <section class="mt-8" aria-labelledby="kursdaten-titel">
-      <h2 id="kursdaten-titel" class="mb-3 text-2xl font-bold">Kursdaten</h2>
-      <div id="kursdaten" role="status" aria-live="polite" class="min-h-48 rounded-xl border border-dashed border-slate-400 bg-flaeche p-4">
-        Hier werden später Kursdaten angezeigt.
-      </div>
-    </section>
-  </main>
-
-  <footer class="p-4 text-sm text-neutral-600">
-    <p>Web-Engineering 1 · DHBW Karlsruhe · <span id="jahr"></span></p>
-  </footer>
-</body>
+    <footer>
+      <p>Web-Engineering 1 · DHBW Karlsruhe · <span id="jahr"></span></p>
+    </footer>
+  </body>
 </html>

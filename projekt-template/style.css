@@ -1,22 +1,239 @@
-/* Quelldatei für Tailwind – wird NICHT direkt eingebunden.
-   Die Tailwind-CLI baut daraus build/style.css (siehe README):
-     ./tailwindcss.exe -i style.css -o build/style.css --minify --watch */
-@import "tailwindcss";
-
-/* Alles an einer Stelle einstellbar. Aus jedem Eintrag macht Tailwind
-   passende Klassen, z. B. --color-akzent → text-akzent, bg-akzent, border-akzent. */
-@theme {
-  --font-sans: system-ui, "Segoe UI", sans-serif;
-  --color-schrift: #1f1f1f;
-  --color-akzent: #0000ff;
-  --color-flaeche: #eef0fb;
+/* Alles an einer Stelle einstellbar – ab Termin 3 füllt ihr das hier aus. */
+:root {
+  --radius: 12px;
+  --abstand: 1rem;
 }
 
-@layer base {
-  /* Tailwinds Reset (Preflight) entfernt Farbe und Unterstrich von Links.
-     So sehen Links überall wieder wie Links aus, ohne Klasse an jedem <a>. */
-  a {
-    color: var(--color-akzent);
-    text-decoration: underline;
-  }
+:root[data-theme="light"] {
+  --main: #f8fafc;
+  --secondary: #e2e8f0;
+  --surface: #ffffff;
+  --accent: #0d9488;
+
+  --bg: #ffffff;
+  --flaeche: #f1f5f9;
+
+  --text: #0f172a;
+  --text-muted: #475569;
+  --border: #cbd5e1;
+  --grid: #e2e8f0;
+
+  --toggle-bg: #131e30;
+  --toggle-fg: #e2e8f0;
+}
+
+:root[data-theme="dark"] {
+  --main: #0b1220;
+  --secondary: #131e30;
+  --surface: #1b2940;
+  --accent: #2dd4bf;
+
+  --bg: #0f172a;
+  --flaeche: #111827;
+
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #2a3a52;
+  --grid: #1e2d43;
+
+  --toggle-bg: #e2e8f0;
+  --toggle-fg: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--main);
+  margin: 0;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+main {
+  max-width: 65ch;
+  margin-inline: auto;
+  padding: var(--abstand);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--abstand);
+  padding: var(--abstand);
+  background: var(--secondary);
+}
+
+.theme-toggle {
+  margin-left: auto;
+  inline-size: 2em;
+  block-size: 2em;
+  min-inline-size: 2em;
+  min-block-size: 2em;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--toggle-bg);
+  color: var(--toggle-fg);
+  cursor: pointer;
+}
+
+.theme-toggle__icon {
+  inline-size: 1.5em;
+  block-size: 1.5em;
+  display: inline-flex;
+}
+
+.theme-toggle__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.theme-toggle:focus-visible {
+  padding: 0;
+}
+
+a {
+  color: var(--text);
+}
+
+footer {
+  padding: var(--abstand);
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+a:hover {
+  border-radius: 5px;
+  outline: 2px solid var(--accent);
+}
+
+:focus-visible {
+  font-weight: bold;
+  color: var(--accent);
+  border-color: var(--accent);
+  border-radius: 5px;
+  padding: 5px;
+  background-color: var(--surface);
+  outline: 0;
+}
+
+/* Ohne diese Regel würde z. B. display: flex an den Karten das
+   hidden-Attribut aushebeln, und der Märkte-Filter blendet nichts aus. */
+[hidden] {
+  display: none !important;
+}
+
+/* Startseite: Märkte */
+
+/* Flexbox: Filter-Buttons nebeneinander, brechen bei Platzmangel um */
+.filter-leiste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-field {
+  display: flex;
+  padding-bottom: 0.2rem;
+  justify-content: space-between;
+}
+
+.filter-chip {
+  padding: 0.375rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.filter-chip:hover {
+  border-color: var(--accent);
+}
+
+.filter-chip[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Grid: so viele Spalten wie passen, jede mind. 14rem breit – */
+/* auf dem Handy automatisch einspaltig.  */
+.markt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: var(--abstand);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Flexbox (senkrecht): margin-top: auto schiebt den Link ans Kartenende,
+   so stehen die Links aller Karten einer Zeile auf gleicher Höhe. */
+.markt-karte {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: var(--abstand);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.markt-karte p {
+  margin: 0;
+}
+
+/* Flexbox (waagrecht): Name links, Kategorie rechts */
+.markt-karte__kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.markt-karte__kopf h3 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.markt-karte__badge {
+  padding: 0.125rem 0.625rem;
+  border-radius: 999px;
+  background: var(--secondary);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.markt-karte__link {
+  margin-top: auto;
+}
+
+.kursdaten {
+  padding: var(--abstand);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--flaeche);
+  min-height: 10rem;
 }

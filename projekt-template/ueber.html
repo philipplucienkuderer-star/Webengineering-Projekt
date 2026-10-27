@@ -1,28 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>&Uuml;ber – Projektname</title>
-  <link rel="stylesheet" href="build/style.css">
-  <script src="app.js" defer></script>
-</head>
-<body class="bg-white text-schrift">
-  <header>
-    <nav class="flex gap-4 bg-flaeche p-4" aria-label="Hauptmenü">
-      <a href="index.html">Start</a>
-      <a href="tradingdaten.html">Tradingdaten</a>
-      <a href="ueber.html" aria-current="page">&Uuml;ber</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>&Uuml;ber – Projektname</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Hauptmenü">
+        <a href="index.html">Start</a>
+        <a href="tradingdaten.html">Tradingdaten</a>
+        <a href="ueber.html" aria-current="page">&Uuml;ber</a>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Farbmodus wechseln"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle__icon" aria-hidden="true"></span>
+        </button>
+      </nav>
+    </header>
 
-  <main class="mx-auto max-w-prose p-4">
-    <h1 class="mb-2 text-3xl font-bold">&Uuml;ber das Projekt</h1>
-    <p>Hier kommen später Infos zum Projekt, Team und Datenquellen hin.</p>
-  </main>
+    <main>
+      <h1>&Uuml;ber das Projekt</h1>
+      <p>Hier kommen später Infos zum Projekt, Team und Datenquellen hin.</p>
+    </main>
 
-  <footer class="p-4 text-sm text-neutral-600">
-    <p>Web-Engineering 1 · DHBW Karlsruhe · <span id="jahr"></span></p>
-  </footer>
-</body>
+    <footer>
+      <p>Web-Engineering 1 · DHBW Karlsruhe · <span id="jahr"></span></p>
+    </footer>
+  </body>
 </html>
