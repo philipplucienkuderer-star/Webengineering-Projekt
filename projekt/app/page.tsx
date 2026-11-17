@@ -8,10 +8,12 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <main className="page-content">
       <h1>Tradingdaten Downloadcenter</h1>
 
-      <section aria-labelledby="maerkte-titel">
+      <section
+        className="market-section"
+        aria-labelledby="maerkte-titel">
         <h2 id="maerkte-titel">Verfügbare Märkte</h2>
         <MarketOverview />
       </section>

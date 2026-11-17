@@ -1,9 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Category = 'alle' | 'krypto' | 'aktien' | 'devisen';
+
+const FILTER_STORAGE_KEY = 'market-overview-filter';
 
 const filters: { value: Category; label: string }[] = [
   { value: 'alle', label: 'Alle' },
@@ -64,11 +66,59 @@ const markets: {
   },
 ];
 
-export default function MarketOverview() {
-  const [activeFilter, setActiveFilter] = useState<Category>('alle');
-  const visibleMarkets = markets.filter(
-    (market) => activeFilter === 'alle' || market.category === activeFilter,
+type ViewState = {
+  markets: typeof markets;
+  activeFilter: Category;
+};
+
+function getVisibleMarkets(viewState: ViewState) {
+  return viewState.markets.filter(
+    (market) =>
+      viewState.activeFilter === 'alle' ||
+      market.category === viewState.activeFilter,
   );
+}
+
+function isCategory(value: unknown): value is Category {
+  return filters.some((filter) => filter.value === value);
+}
+
+export default function MarketOverview() {
+  const [state, setState] = useState<ViewState>({
+    markets,
+    activeFilter: 'alle',
+  });
+
+  useEffect(() => {
+    let timeoutId: number | undefined;
+
+    try {
+      const storedFilter = window.localStorage.getItem(FILTER_STORAGE_KEY);
+
+      if (storedFilter === null) return;
+
+      const parsedFilter: unknown = JSON.parse(storedFilter);
+
+      if (isCategory(parsedFilter)) {
+        timeoutId = window.setTimeout(() => {
+          setState((currentState) => ({
+            ...currentState,
+            activeFilter: parsedFilter,
+          }));
+        }, 0);
+      } else {
+        console.warn('Ungültiger gespeicherter Marktfilter wird ignoriert.');
+      }
+    } catch {
+      console.warn('Gespeicherter Marktfilter konnte nicht gelesen werden.');
+    }
+
+    return () => {
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
+  }, []);
+
+  const visibleMarkets = getVisibleMarkets(state);
 
   return (
     <>
@@ -81,12 +131,25 @@ export default function MarketOverview() {
             key={filter.value}
             type="button"
             className="filter-chip"
-            aria-pressed={activeFilter === filter.value}
-            onClick={() => setActiveFilter(filter.value)}>
+            aria-pressed={state.activeFilter === filter.value}
+            onClick={() => {
+              setState((currentState) => ({
+                ...currentState,
+                activeFilter: filter.value,
+              }));
+              window.localStorage.setItem(
+                FILTER_STORAGE_KEY,
+                JSON.stringify(filter.value),
+              );
+            }}>
             {filter.label}
           </button>
         ))}
       </div>
+
+      <p aria-live="polite">
+        Angezeigt: {visibleMarkets.length} von {state.markets.length} Märkten
+      </p>
 
       <ul className="markt-grid">
         {visibleMarkets.map((market) => (

@@ -1,0 +1,118 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #f5f7fb;
+}
+
+.page-content {
+  width: min(100% - 2rem, 72rem);
+  margin: 0 auto;
+  padding: 3.5rem 0 5rem;
+}
+
+.page-content h1 {
+  max-width: 46rem;
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.market-section {
+  margin-top: 4rem;
+}
+
+.market-section h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.markt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 5fr));
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.markt-karte {
+  display: flex;
+  flex-direction: column;
+  min-height: 12rem;
+  padding: 1.5rem;
+  border: 1px solid #dce1ea;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 0.5rem 1.5rem rgb(23 32 51 / 8%);
+}
+
+.markt-karte__kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.markt-karte h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.markt-karte__badge {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #e8efff;
+  color: #2454a6;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.markt-karte p {
+  margin: 1rem 0;
+  color: #5d677a;
+  line-height: 1.5;
+}
+
+.markt-karte__link {
+  margin-top: auto;
+  color: #2454a6;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.markt-karte__link:hover {
+  text-decoration: underline;
+}
+
+footer {
+  width: min(100% - 2rem, 72rem);
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  color: #5d677a;
+  border-top: 1px solid #dce1ea;
+}
+
+@media (max-width: 40rem) {
+  .page-content {
+    padding-top: 2.5rem;
+  }
+
+  .market-section {
+    margin-top: 3rem;
+  }
+}
