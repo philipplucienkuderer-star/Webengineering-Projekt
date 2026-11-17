@@ -116,3 +116,108 @@ footer {
     margin-top: 3rem;
   }
 }
+
+.download-page {
+  max-width: 62rem;
+}
+
+.download-hero {
+  max-width: 44rem;
+}
+
+.eyebrow {
+  margin: 0 0 0 0.75rem;
+  color: #2454a6;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.download-hero h1 {
+  margin: 0 0 1rem;
+}
+
+.download-hero > p:last-child {
+  margin: 0;
+  color: #5d677a;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.filter-form {
+  display: grid;
+  grid-template-columns: repeat(2, 16r);
+  gap: 1.25rem;
+  padding: 2rem;
+  border: 1px solid #dce1ea;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 0.5rem 1.5rem egb(23 32 51 / 8%);
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-field label {
+  color: #172033;
+  font-weight: 700;
+}
+
+.filter-field input,
+.filter-field select {
+  min-height: 3rem;
+  padding: 0 0.8rem;
+  border: 1px solid #c8cfdb;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #172033;
+  font: inherit;
+}
+
+.filter-field input:focus,
+.filter-field select:focus {
+  outline: 3px solid rgb(36 84 166 / 20%);
+  border-color: #2454a6;
+}
+
+#filter-anwenden {
+  grid-column: 1 / -1;
+  min-height: 3rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: #2454a6;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+#filter-anwenden:hover {
+  background: #193d7b;
+}
+
+#filter-anwenden:focus-visible {
+  outline: 3px solid rgb(36 84 166 / 35%);
+  outline-offset: 2px;
+}
+
+.kursdaten {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #2454a6;
+  border-radius: 0.5rem;
+  background: #eef4ff;
+  color: #172033;
+}
+
+.kursdaten {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #2454a6;
+  border-radius: 0.5rem;
+  background: #eef4ff;
+  color: #172033;
+}

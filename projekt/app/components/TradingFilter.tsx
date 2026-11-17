@@ -26,10 +26,62 @@ export default function TradingFilter() {
     );
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    updateResult();
+async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+
+  const formData = new FormData(event.currentTarget);
+
+  const start = String(formData.get('startdatum') || '');
+  const end = String(formData.get('enddatum') || '');
+  const candleSize = String(formData.get('kerzengroesse') || '');
+  const asset = String(formData.get('asset') || '');
+
+  if (!start || !end || !candleSize || !asset) {
+    setResult('Bitte alle Felder ausfüllen.');
+    return;
   }
+
+  if (start > end) {
+    setResult('Fehler: Startdatum liegt nach dem Enddatum.');
+    return;
+  }
+
+  setResult('Daten werden geladen ...');
+
+  const params = new URLSearchParams({
+    asset,
+    startdatum: start,
+    enddatum: end,
+    kerzengroesse: candleSize,
+  });
+
+  try {
+    const response = await fetch(`/api/kursdaten?${params.toString()}`);
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      setResult(`Fehler: ${errorMessage}`);
+      return;
+    }
+
+    const csvFile = await response.blob();
+    const downloadUrl = URL.createObjectURL(csvFile);
+
+    const downloadLink = document.createElement('a');
+    downloadLink.href = downloadUrl;
+    downloadLink.download = `${asset.replace('/', '-')}_${start}_${end}.csv`;
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+
+    URL.revokeObjectURL(downloadUrl);
+
+    setResult('Die Daten wurden erfolgreich heruntergeladen.');
+  } catch {
+    setResult('Die Daten konnten nicht geladen werden.');
+  }
+}
 
   return (
     <>
@@ -44,12 +96,22 @@ export default function TradingFilter() {
         >
           <div className="filter-field">
             <label htmlFor="startdatum">Startdatum</label>
-            <input id="startdatum" name="startdatum" type="date" />
+            <input
+              id="startdatum"
+              name="startdatum"
+              type="date"
+              lang="de-DE"
+            />
           </div>
 
           <div className="filter-field">
             <label htmlFor="enddatum">Enddatum</label>
-            <input id="enddatum" name="enddatum" type="date" />
+            <input
+              id="enddatum"
+              name="enddatum"
+              type="date"
+              lang="de-DE"
+            />
           </div>
 
           <div className="filter-field">

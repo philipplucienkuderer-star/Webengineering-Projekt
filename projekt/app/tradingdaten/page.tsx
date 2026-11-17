@@ -7,8 +7,14 @@ export const metadata: Metadata = {
 
 export default function TradingDataPage() {
   return (
-    <main>
-      <h1>Tradingdaten</h1>
+    <main className="page-content download-page">
+      <header className="download-hero">
+        <h1>Tradingdaten herrunterladen</h1>
+        <p>
+          Wähle einen Markt, einen Zeitraum und die gewünschte Kerzengröße aus.
+          Anschließend kannst du die Daten als CSV-Datei herunterladen.
+        </p>
+      </header>
       <TradingFilter />
     </main>
   );
