@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Projektname
 
-## Getting Started
+Ein bis zwei Sätze: Was kann die App, und für wen?
 
-First, run the development server:
+**Live:** https://<euer-name>.github.io/<repo>/
+**Team:** Vorname Nachname, Vorname Nachname
+
+## Was die App kann
+
+- Funktion 1
+- Funktion 2
+- Funktion 3
+
+## Datenquelle
+
+Welche API, welche Felder, wie oft aktualisiert? Link zur Doku.
+
+## Lokal starten
+
+In VS Code mit Live Server öffnen – oder:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx serve .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Styling mit Tailwind CSS
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Das Styling läuft über [Tailwind CSS v4](https://tailwindcss.com/docs) mit der Standalone-CLI (kein Node nötig).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `style.css` ist die **Quelle**: Hier stehen die Farben und Schriften (`@theme`). Diese Datei bearbeitet ihr.
+- `build/style.css` wird **erzeugt** und von den HTML-Seiten eingebunden. Nicht von Hand ändern, aber committen, damit GitHub Pages ohne Build funktioniert.
 
-## Learn More
+Einmalig die CLI herunterladen (ca. 110 MB, steht in `.gitignore`):
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+curl -Lo tailwindcss.exe https://github.com/tailwindlabs/tailwindcss/releases/download/v4.3.3/tailwindcss-windows-x64.exe
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Beim Entwickeln im Hintergrund laufen lassen. Bei jeder Änderung an HTML oder `style.css` wird neu gebaut:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+./tailwindcss.exe -i style.css -o build/style.css --minify --watch
+```
 
-## Deploy on Vercel
+## Technik
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Womit gebaut und warum. Eine Zeile pro Entscheidung reicht, aber es soll eine Entscheidung sein, keine Aufzählung von Buzzwords.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## KI-Log
+
+Ehrlich ausfüllen, das zählt zur Bewertung.
+
+| Werkzeug | Wofür benutzt |
+| --- | --- |
+| z. B. Copilot | z. B. Formular-Validierung erklären lassen |
+
+**Ein Fall, in dem KI geholfen hat:** Was habt ihr gefragt, was kam zurück, was habt ihr geändert?
+
+**Ein Fall, in dem KI falsch lag:** Woran habt ihr es gemerkt, wie habt ihr es gelöst?

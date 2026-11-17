@@ -1,6 +1,0 @@
-node_modules/
-dist/
-.DS_Store
-.env
-# Tailwind-CLI (ca. 110 MB) – jede:r lädt sie selbst herunter, siehe README
-tailwindcss.exe
